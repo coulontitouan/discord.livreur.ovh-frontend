@@ -6,6 +6,8 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 
+export const API = 'http://127.0.0.1/api';
+
 export const appConfig: ApplicationConfig = {
     providers: [
         provideAnimations(),

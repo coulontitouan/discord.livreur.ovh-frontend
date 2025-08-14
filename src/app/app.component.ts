@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, model, OnInit } from '@angular/core';
+import { ApiService } from './api/api';
+import { APIUser } from 'discord-api-types/v10';
 
 @Component({
     selector: 'app-root',
@@ -10,11 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
     title = 'frontend';
-    name = 'John Doe';
-    banner: { color: string, url: string | null; } = { color: '#000000', url: null };
+    user = model<APIUser | null>(null);
 
-    constructor() { }
+    constructor(private readonly api: ApiService) { }
 
     ngOnInit() {
+        this.api.getUser('@me').subscribe(this.user.set)
     }
 }
